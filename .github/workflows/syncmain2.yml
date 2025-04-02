@@ -1,0 +1,33 @@
+name: Sync Files
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@main
+
+      - name: output token
+        run: |
+          echo "SPAT=${{ secrets.SPAT }}"
+
+    #   - name: Run GitHub File Sync
+    #     uses: BetaHuhn/repo-file-sync-action@v1
+    #     with:
+    #       GH_PAT: ${{ secrets.SPAT }}
+
+      - name: Running Workflow Sync
+        uses: varunsridharan/action-github-workflow-sync@main
+        with:
+            DRY_RUN: false
+            REPOSITORIES: |
+              flyingangel2013/verifyFileSync@main
+              flyingangel2013/verifyFileSync@v2
+            WORKFLOW_FILES: |
+              .github/workflows/syncmain.yml=.github/workflows/syncmain2.yml
+            GITHUB_TOKEN: ${{ secrets.SPAT }}
