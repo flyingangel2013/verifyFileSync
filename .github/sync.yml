@@ -1,0 +1,4 @@
+flyingangel2013/verifyFileSync:
+  - source: .github/workflows/syncmain.yml
+    dest: .github/workflows/syncmain2.yml
+  
