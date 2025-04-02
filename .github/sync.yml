@@ -1,4 +1,7 @@
-flyingangel2013/verifyFileSync:
-  - source: .github/workflows/syncmain.yml
-    dest: .github/workflows/syncmain2.yml
+group:
+  repos: |
+    verifyFileSyn@v2
+  files:
+    - source: .github/workflows/
+      dest: .github/workflows/
   
