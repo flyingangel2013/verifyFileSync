@@ -26,8 +26,8 @@ jobs:
         with:
             DRY_RUN: false
             REPOSITORIES: |
-              verifyFileSync
-              verifyFileSync@v2
+              flyingangel2013/verifyFileSync
+              flyingangel2013/verifyFileSync@v2
             WORKFLOW_FILES: |
               .github/workflow/syncmain.yml=.github/workflows/syncmain2.yml
             GITHUB_TOKEN: ${{ secrets.SPAT }}
