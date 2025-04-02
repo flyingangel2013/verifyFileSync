@@ -2,7 +2,7 @@ name: Sync Files
 on:
   push:
     branches:
-      - v1
+      - 'main'
   workflow_dispatch:
 
 jobs:
@@ -16,7 +16,18 @@ jobs:
         run: |
           echo "SPAT=${{ secrets.SPAT }}"
 
-      - name: Run GitHub File Sync
-        uses: BetaHuhn/repo-file-sync-action@v1
+    #   - name: Run GitHub File Sync
+    #     uses: BetaHuhn/repo-file-sync-action@v1
+    #     with:
+    #       GH_PAT: ${{ secrets.SPAT }}
+
+      - name: Running Workflow Sync
+        uses: varunsridharan/action-github-workflow-sync@main
         with:
-          GH_PAT: ${{ secrets.SPAT }}
+            DRY_RUN: false
+            REPOSITORIES: |
+              verifyFileSync
+              verifyFileSync@v2
+            WORKFLOW_FILES: |
+              .github/workflow/syncmain.yml=.github/workflows/syncmain2.yml
+            GITHUB_TOKEN: ${{ secrets.SPAT }}
